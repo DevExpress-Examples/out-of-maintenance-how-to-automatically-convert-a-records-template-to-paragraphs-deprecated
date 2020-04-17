@@ -51,9 +51,9 @@ Namespace AsParagraphs
 				For Each dataField As DataFieldInfo In Me.dataFields
 					template.AppendText(String.Format("{0} = ", dataField.DisplayName))
 					template.CreateSnText(template.Range.End, dataField.DataPaths(dataField.DataPaths.Length - 1))
-					template.AppendParagraph()
+					template.Paragraphs.Append()
 				Next dataField
-				template.AppendParagraph()
+				template.Paragraphs.Append()
 				list.EndUpdate()
 				Exit For
 			Next field

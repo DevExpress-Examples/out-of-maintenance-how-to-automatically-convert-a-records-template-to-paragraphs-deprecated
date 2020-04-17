@@ -66,9 +66,9 @@ namespace AsParagraphs {
                 foreach(DataFieldInfo dataField in this.dataFields) {
                     template.AppendText(string.Format("{0} = ", dataField.DisplayName));
                     template.CreateSnText(template.Range.End, dataField.DataPaths[dataField.DataPaths.Length - 1]);
-                    template.AppendParagraph();
+                    template.Paragraphs.Append();
                 }
-                template.AppendParagraph();
+                template.Paragraphs.Append();
                 list.EndUpdate();
                 break;
             }
