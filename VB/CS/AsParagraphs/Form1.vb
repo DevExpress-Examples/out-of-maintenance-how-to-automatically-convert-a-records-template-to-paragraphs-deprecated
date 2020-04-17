@@ -1,4 +1,17 @@
-﻿Imports Microsoft.VisualBasic
+﻿' Developer Express Code Central Example:
+' How to automatically convert a record's template to paragraphs when a field is inserted into a report
+' 
+' This example demonstrates how the default record template (Table) can be
+' converted to paragraphs automatically when a field is dragged and dropped from
+' the Data Explorer.
+' In this example, this functionality is implemented in the
+' SnapDocument.PrepareSnList
+' (http://documentation.devexpress.com/#WindowsForms/DevExpressSnapCoreAPISnapDocument_PrepareSnListtopic)
+' event handler.
+' 
+' You can find sample updates and versions for different programming languages here:
+' http://www.devexpress.com/example=E4903
+
 Imports System
 Imports System.Collections.Generic
 Imports System.ComponentModel
@@ -13,6 +26,7 @@ Imports DevExpress.Snap.Core.API
 Namespace AsParagraphs
 	Partial Public Class Form1
 		Inherits Form
+
 		Public Sub New()
 			InitializeComponent()
 			AddDataSource()
@@ -31,7 +45,23 @@ Namespace AsParagraphs
 		End Sub
 
 		Private Sub AddDataSource()
-			snapControl1.Document.DataSource = New List(Of SampleTestObject) (New SampleTestObject() {New SampleTestObject() With {.ID = 1, .Name = "Apple", .Color = "Green"}, New SampleTestObject() With {.ID = 2, .Name = "Banana", .Color = "Yellow"}, New SampleTestObject() With {.ID = 3, .Name = "Strawberry", .Color = "Red"}})
+			snapControl1.Document.DataSource = New List(Of SampleTestObject)() From {
+				New SampleTestObject() With {
+					.ID = 1,
+					.Name = "Apple",
+					.Color = "Green"
+				},
+				New SampleTestObject() With {
+					.ID = 2,
+					.Name = "Banana",
+					.Color = "Yellow"
+				},
+				New SampleTestObject() With {
+					.ID = 3,
+					.Name = "Strawberry",
+					.Color = "Red"
+				}
+			}
 		End Sub
 
 		Private Sub Document_BeforeInsertSnList(ByVal sender As Object, ByVal e As BeforeInsertSnListEventArgs)
@@ -62,33 +92,9 @@ Namespace AsParagraphs
 	End Class
 
 	Public Class SampleTestObject
-		Private privateID As Integer
 		Public Property ID() As Integer
-			Get
-				Return privateID
-			End Get
-			Set(ByVal value As Integer)
-				privateID = value
-			End Set
-		End Property
-		Private privateName As String
 		Public Property Name() As String
-			Get
-				Return privateName
-			End Get
-			Set(ByVal value As String)
-				privateName = value
-			End Set
-		End Property
-		Private privateColor As String
 		Public Property Color() As String
-			Get
-				Return privateColor
-			End Get
-			Set(ByVal value As String)
-				privateColor = value
-			End Set
-		End Property
 
 
 	End Class

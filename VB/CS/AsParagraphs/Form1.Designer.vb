@@ -1,5 +1,17 @@
-﻿Imports Microsoft.VisualBasic
-Imports System
+﻿' Developer Express Code Central Example:
+' How to automatically convert a record's template to paragraphs when a field is inserted into a report
+' 
+' This example demonstrates how the default record template (Table) can be
+' converted to paragraphs automatically when a field is dragged and dropped from
+' the Data Explorer.
+' In this example, this functionality is implemented in the
+' SnapDocument.PrepareSnList
+' (http://documentation.devexpress.com/#WindowsForms/DevExpressSnapCoreAPISnapDocument_PrepareSnListtopic)
+' event handler.
+' 
+' You can find sample updates and versions for different programming languages here:
+' http://www.devexpress.com/example=E4903
+
 Namespace AsParagraphs
 	Partial Public Class Form1
 		''' <summary>
@@ -312,7 +324,7 @@ Namespace AsParagraphs
 			Me.toggleBandedRowsItem1 = New DevExpress.XtraRichEdit.UI.ToggleBandedRowsItem()
 			Me.toggleFirstColumnItem1 = New DevExpress.XtraRichEdit.UI.ToggleFirstColumnItem()
 			Me.toggleLastColumnItem1 = New DevExpress.XtraRichEdit.UI.ToggleLastColumnItem()
-			Me.toggleBandedColumnItem1 = New DevExpress.XtraRichEdit.UI.ToggleBandedColumnItem()
+			Me.toggleBandedColumnItem1 = New DevExpress.XtraRichEdit.UI.ToggleBandedColumnsItem()
 			Me.tableStylesRibbonPageGroup1 = New DevExpress.XtraRichEdit.UI.TableStylesRibbonPageGroup()
 			Me.galleryChangeTableStyleItem1 = New DevExpress.XtraRichEdit.UI.GalleryChangeTableStyleItem()
 			Me.tableCellStylesRibbonPageGroup1 = New DevExpress.Snap.Extensions.UI.TableCellStylesRibbonPageGroup()
@@ -546,10 +558,10 @@ Namespace AsParagraphs
 			Me.snapControl1.MenuManager = Me.ribbonControl1
 			Me.snapControl1.Name = "snapControl1"
 			Me.snapControl1.Options.Fields.UseCurrentCultureDateTimeFormat = False
-			Me.snapControl1.Options.MailMerge.KeepLastParagraph = False
 			Me.snapControl1.Size = New System.Drawing.Size(568, 435)
 			Me.snapControl1.TabIndex = 0
-'			Me.snapControl1.DocumentLoaded += New System.EventHandler(Me.snapControl1_DocumentLoaded);
+'INSTANT VB NOTE: The following InitializeComponent event wireup was converted to a 'Handles' clause:
+'ORIGINAL LINE: this.snapControl1.DocumentLoaded += new DevExpress.Snap.DocumentImportedEventHandler(this.snapControl1_DocumentLoaded);
 			' 
 			' snapDockManager1
 			' 
@@ -1124,7 +1136,11 @@ Namespace AsParagraphs
 			' changeTextCaseItem1
 			' 
 			Me.changeTextCaseItem1.Id = 37
-			Me.changeTextCaseItem1.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() { New DevExpress.XtraBars.LinkPersistInfo(Me.makeTextUpperCaseItem1), New DevExpress.XtraBars.LinkPersistInfo(Me.makeTextLowerCaseItem1), New DevExpress.XtraBars.LinkPersistInfo(Me.toggleTextCaseItem1)})
+			Me.changeTextCaseItem1.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() {
+				New DevExpress.XtraBars.LinkPersistInfo(Me.makeTextUpperCaseItem1),
+				New DevExpress.XtraBars.LinkPersistInfo(Me.makeTextLowerCaseItem1),
+				New DevExpress.XtraBars.LinkPersistInfo(Me.toggleTextCaseItem1)
+			})
 			Me.changeTextCaseItem1.Name = "changeTextCaseItem1"
 			' 
 			' makeTextUpperCaseItem1
@@ -1253,7 +1269,16 @@ Namespace AsParagraphs
 			' changeParagraphLineSpacingItem1
 			' 
 			Me.changeParagraphLineSpacingItem1.Id = 52
-			Me.changeParagraphLineSpacingItem1.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() { New DevExpress.XtraBars.LinkPersistInfo(Me.setSingleParagraphSpacingItem1), New DevExpress.XtraBars.LinkPersistInfo(Me.setSesquialteralParagraphSpacingItem1), New DevExpress.XtraBars.LinkPersistInfo(Me.setDoubleParagraphSpacingItem1), New DevExpress.XtraBars.LinkPersistInfo(Me.showLineSpacingFormItem1), New DevExpress.XtraBars.LinkPersistInfo(Me.addSpacingBeforeParagraphItem1), New DevExpress.XtraBars.LinkPersistInfo(Me.removeSpacingBeforeParagraphItem1), New DevExpress.XtraBars.LinkPersistInfo(Me.addSpacingAfterParagraphItem1), New DevExpress.XtraBars.LinkPersistInfo(Me.removeSpacingAfterParagraphItem1)})
+			Me.changeParagraphLineSpacingItem1.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() {
+				New DevExpress.XtraBars.LinkPersistInfo(Me.setSingleParagraphSpacingItem1),
+				New DevExpress.XtraBars.LinkPersistInfo(Me.setSesquialteralParagraphSpacingItem1),
+				New DevExpress.XtraBars.LinkPersistInfo(Me.setDoubleParagraphSpacingItem1),
+				New DevExpress.XtraBars.LinkPersistInfo(Me.showLineSpacingFormItem1),
+				New DevExpress.XtraBars.LinkPersistInfo(Me.addSpacingBeforeParagraphItem1),
+				New DevExpress.XtraBars.LinkPersistInfo(Me.removeSpacingBeforeParagraphItem1),
+				New DevExpress.XtraBars.LinkPersistInfo(Me.addSpacingAfterParagraphItem1),
+				New DevExpress.XtraBars.LinkPersistInfo(Me.removeSpacingAfterParagraphItem1)
+			})
 			Me.changeParagraphLineSpacingItem1.Name = "changeParagraphLineSpacingItem1"
 			' 
 			' setSingleParagraphSpacingItem1
@@ -1519,7 +1544,13 @@ Namespace AsParagraphs
 			' changeSectionPageMarginsItem1
 			' 
 			Me.changeSectionPageMarginsItem1.Id = 80
-			Me.changeSectionPageMarginsItem1.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() { New DevExpress.XtraBars.LinkPersistInfo(Me.setNormalSectionPageMarginsItem1), New DevExpress.XtraBars.LinkPersistInfo(Me.setNarrowSectionPageMarginsItem1), New DevExpress.XtraBars.LinkPersistInfo(Me.setModerateSectionPageMarginsItem1), New DevExpress.XtraBars.LinkPersistInfo(Me.setWideSectionPageMarginsItem1), New DevExpress.XtraBars.LinkPersistInfo(Me.showPageMarginsSetupFormItem1)})
+			Me.changeSectionPageMarginsItem1.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() {
+				New DevExpress.XtraBars.LinkPersistInfo(Me.setNormalSectionPageMarginsItem1),
+				New DevExpress.XtraBars.LinkPersistInfo(Me.setNarrowSectionPageMarginsItem1),
+				New DevExpress.XtraBars.LinkPersistInfo(Me.setModerateSectionPageMarginsItem1),
+				New DevExpress.XtraBars.LinkPersistInfo(Me.setWideSectionPageMarginsItem1),
+				New DevExpress.XtraBars.LinkPersistInfo(Me.showPageMarginsSetupFormItem1)
+			})
 			Me.changeSectionPageMarginsItem1.Name = "changeSectionPageMarginsItem1"
 			' 
 			' setNormalSectionPageMarginsItem1
@@ -1550,7 +1581,10 @@ Namespace AsParagraphs
 			' changeSectionPageOrientationItem1
 			' 
 			Me.changeSectionPageOrientationItem1.Id = 86
-			Me.changeSectionPageOrientationItem1.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() { New DevExpress.XtraBars.LinkPersistInfo(Me.setPortraitPageOrientationItem1), New DevExpress.XtraBars.LinkPersistInfo(Me.setLandscapePageOrientationItem1)})
+			Me.changeSectionPageOrientationItem1.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() {
+				New DevExpress.XtraBars.LinkPersistInfo(Me.setPortraitPageOrientationItem1),
+				New DevExpress.XtraBars.LinkPersistInfo(Me.setLandscapePageOrientationItem1)
+			})
 			Me.changeSectionPageOrientationItem1.Name = "changeSectionPageOrientationItem1"
 			' 
 			' setPortraitPageOrientationItem1
@@ -1571,7 +1605,12 @@ Namespace AsParagraphs
 			' changeSectionColumnsItem1
 			' 
 			Me.changeSectionColumnsItem1.Id = 90
-			Me.changeSectionColumnsItem1.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() { New DevExpress.XtraBars.LinkPersistInfo(Me.setSectionOneColumnItem1), New DevExpress.XtraBars.LinkPersistInfo(Me.setSectionTwoColumnsItem1), New DevExpress.XtraBars.LinkPersistInfo(Me.setSectionThreeColumnsItem1), New DevExpress.XtraBars.LinkPersistInfo(Me.showColumnsSetupFormItem1)})
+			Me.changeSectionColumnsItem1.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() {
+				New DevExpress.XtraBars.LinkPersistInfo(Me.setSectionOneColumnItem1),
+				New DevExpress.XtraBars.LinkPersistInfo(Me.setSectionTwoColumnsItem1),
+				New DevExpress.XtraBars.LinkPersistInfo(Me.setSectionThreeColumnsItem1),
+				New DevExpress.XtraBars.LinkPersistInfo(Me.showColumnsSetupFormItem1)
+			})
 			Me.changeSectionColumnsItem1.Name = "changeSectionColumnsItem1"
 			' 
 			' setSectionOneColumnItem1
@@ -1597,7 +1636,13 @@ Namespace AsParagraphs
 			' insertBreakItem1
 			' 
 			Me.insertBreakItem1.Id = 95
-			Me.insertBreakItem1.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() { New DevExpress.XtraBars.LinkPersistInfo(Me.insertPageBreakItem1), New DevExpress.XtraBars.LinkPersistInfo(Me.insertColumnBreakItem1), New DevExpress.XtraBars.LinkPersistInfo(Me.insertSectionBreakNextPageItem1), New DevExpress.XtraBars.LinkPersistInfo(Me.insertSectionBreakEvenPageItem1), New DevExpress.XtraBars.LinkPersistInfo(Me.insertSectionBreakOddPageItem1)})
+			Me.insertBreakItem1.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() {
+				New DevExpress.XtraBars.LinkPersistInfo(Me.insertPageBreakItem1),
+				New DevExpress.XtraBars.LinkPersistInfo(Me.insertColumnBreakItem1),
+				New DevExpress.XtraBars.LinkPersistInfo(Me.insertSectionBreakNextPageItem1),
+				New DevExpress.XtraBars.LinkPersistInfo(Me.insertSectionBreakEvenPageItem1),
+				New DevExpress.XtraBars.LinkPersistInfo(Me.insertSectionBreakOddPageItem1)
+			})
 			Me.insertBreakItem1.Name = "insertBreakItem1"
 			' 
 			' insertPageBreakItem2
@@ -1628,7 +1673,14 @@ Namespace AsParagraphs
 			' changeSectionLineNumberingItem1
 			' 
 			Me.changeSectionLineNumberingItem1.Id = 100
-			Me.changeSectionLineNumberingItem1.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() { New DevExpress.XtraBars.LinkPersistInfo(Me.setSectionLineNumberingNoneItem1), New DevExpress.XtraBars.LinkPersistInfo(Me.setSectionLineNumberingContinuousItem1), New DevExpress.XtraBars.LinkPersistInfo(Me.setSectionLineNumberingRestartNewPageItem1), New DevExpress.XtraBars.LinkPersistInfo(Me.setSectionLineNumberingRestartNewSectionItem1), New DevExpress.XtraBars.LinkPersistInfo(Me.toggleParagraphSuppressLineNumbersItem1), New DevExpress.XtraBars.LinkPersistInfo(Me.showLineNumberingFormItem1)})
+			Me.changeSectionLineNumberingItem1.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() {
+				New DevExpress.XtraBars.LinkPersistInfo(Me.setSectionLineNumberingNoneItem1),
+				New DevExpress.XtraBars.LinkPersistInfo(Me.setSectionLineNumberingContinuousItem1),
+				New DevExpress.XtraBars.LinkPersistInfo(Me.setSectionLineNumberingRestartNewPageItem1),
+				New DevExpress.XtraBars.LinkPersistInfo(Me.setSectionLineNumberingRestartNewSectionItem1),
+				New DevExpress.XtraBars.LinkPersistInfo(Me.toggleParagraphSuppressLineNumbersItem1),
+				New DevExpress.XtraBars.LinkPersistInfo(Me.showLineNumberingFormItem1)
+			})
 			Me.changeSectionLineNumberingItem1.Name = "changeSectionLineNumberingItem1"
 			' 
 			' setSectionLineNumberingNoneItem1
@@ -1990,7 +2042,19 @@ Namespace AsParagraphs
 			' changeTableBordersItem1
 			' 
 			Me.changeTableBordersItem1.Id = 139
-			Me.changeTableBordersItem1.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() { New DevExpress.XtraBars.LinkPersistInfo(Me.toggleTableCellsBottomBorderItem1), New DevExpress.XtraBars.LinkPersistInfo(Me.toggleTableCellsTopBorderItem1), New DevExpress.XtraBars.LinkPersistInfo(Me.toggleTableCellsLeftBorderItem1), New DevExpress.XtraBars.LinkPersistInfo(Me.toggleTableCellsRightBorderItem1), New DevExpress.XtraBars.LinkPersistInfo(Me.resetTableCellsAllBordersItem1), New DevExpress.XtraBars.LinkPersistInfo(Me.toggleTableCellsAllBordersItem1), New DevExpress.XtraBars.LinkPersistInfo(Me.toggleTableCellsOutsideBorderItem1), New DevExpress.XtraBars.LinkPersistInfo(Me.toggleTableCellsInsideBorderItem1), New DevExpress.XtraBars.LinkPersistInfo(Me.toggleTableCellsInsideHorizontalBorderItem1), New DevExpress.XtraBars.LinkPersistInfo(Me.toggleTableCellsInsideVerticalBorderItem1), New DevExpress.XtraBars.LinkPersistInfo(Me.toggleShowTableGridLinesItem1)})
+			Me.changeTableBordersItem1.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() {
+				New DevExpress.XtraBars.LinkPersistInfo(Me.toggleTableCellsBottomBorderItem1),
+				New DevExpress.XtraBars.LinkPersistInfo(Me.toggleTableCellsTopBorderItem1),
+				New DevExpress.XtraBars.LinkPersistInfo(Me.toggleTableCellsLeftBorderItem1),
+				New DevExpress.XtraBars.LinkPersistInfo(Me.toggleTableCellsRightBorderItem1),
+				New DevExpress.XtraBars.LinkPersistInfo(Me.resetTableCellsAllBordersItem1),
+				New DevExpress.XtraBars.LinkPersistInfo(Me.toggleTableCellsAllBordersItem1),
+				New DevExpress.XtraBars.LinkPersistInfo(Me.toggleTableCellsOutsideBorderItem1),
+				New DevExpress.XtraBars.LinkPersistInfo(Me.toggleTableCellsInsideBorderItem1),
+				New DevExpress.XtraBars.LinkPersistInfo(Me.toggleTableCellsInsideHorizontalBorderItem1),
+				New DevExpress.XtraBars.LinkPersistInfo(Me.toggleTableCellsInsideVerticalBorderItem1),
+				New DevExpress.XtraBars.LinkPersistInfo(Me.toggleShowTableGridLinesItem1)
+			})
 			Me.changeTableBordersItem1.Name = "changeTableBordersItem1"
 			' 
 			' toggleTableCellsBottomBorderItem1
@@ -2082,7 +2146,12 @@ Namespace AsParagraphs
 			' selectTableElementsItem1
 			' 
 			Me.selectTableElementsItem1.Id = 152
-			Me.selectTableElementsItem1.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() { New DevExpress.XtraBars.LinkPersistInfo(Me.selectTableCellItem1), New DevExpress.XtraBars.LinkPersistInfo(Me.selectTableColumnItem1), New DevExpress.XtraBars.LinkPersistInfo(Me.selectTableRowItem1), New DevExpress.XtraBars.LinkPersistInfo(Me.selectTableItem1)})
+			Me.selectTableElementsItem1.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() {
+				New DevExpress.XtraBars.LinkPersistInfo(Me.selectTableCellItem1),
+				New DevExpress.XtraBars.LinkPersistInfo(Me.selectTableColumnItem1),
+				New DevExpress.XtraBars.LinkPersistInfo(Me.selectTableRowItem1),
+				New DevExpress.XtraBars.LinkPersistInfo(Me.selectTableItem1)
+			})
 			Me.selectTableElementsItem1.Name = "selectTableElementsItem1"
 			' 
 			' selectTableCellItem1
@@ -2122,7 +2191,12 @@ Namespace AsParagraphs
 			' deleteTableElementsItem1
 			' 
 			Me.deleteTableElementsItem1.Id = 158
-			Me.deleteTableElementsItem1.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() { New DevExpress.XtraBars.LinkPersistInfo(Me.showDeleteTableCellsFormItem1), New DevExpress.XtraBars.LinkPersistInfo(Me.deleteTableColumnsItem1), New DevExpress.XtraBars.LinkPersistInfo(Me.deleteTableRowsItem1), New DevExpress.XtraBars.LinkPersistInfo(Me.deleteTableItem1)})
+			Me.deleteTableElementsItem1.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() {
+				New DevExpress.XtraBars.LinkPersistInfo(Me.showDeleteTableCellsFormItem1),
+				New DevExpress.XtraBars.LinkPersistInfo(Me.deleteTableColumnsItem1),
+				New DevExpress.XtraBars.LinkPersistInfo(Me.deleteTableRowsItem1),
+				New DevExpress.XtraBars.LinkPersistInfo(Me.deleteTableItem1)
+			})
 			Me.deleteTableElementsItem1.Name = "deleteTableElementsItem1"
 			' 
 			' showDeleteTableCellsFormItem1
@@ -2195,7 +2269,11 @@ Namespace AsParagraphs
 			' toggleTableAutoFitItem1
 			' 
 			Me.toggleTableAutoFitItem1.Id = 170
-			Me.toggleTableAutoFitItem1.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() { New DevExpress.XtraBars.LinkPersistInfo(Me.toggleTableAutoFitContentsItem1), New DevExpress.XtraBars.LinkPersistInfo(Me.toggleTableAutoFitWindowItem1), New DevExpress.XtraBars.LinkPersistInfo(Me.toggleTableFixedColumnWidthItem1)})
+			Me.toggleTableAutoFitItem1.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() {
+				New DevExpress.XtraBars.LinkPersistInfo(Me.toggleTableAutoFitContentsItem1),
+				New DevExpress.XtraBars.LinkPersistInfo(Me.toggleTableAutoFitWindowItem1),
+				New DevExpress.XtraBars.LinkPersistInfo(Me.toggleTableFixedColumnWidthItem1)
+			})
 			Me.toggleTableAutoFitItem1.Name = "toggleTableAutoFitItem1"
 			' 
 			' toggleTableAutoFitContentsItem1
@@ -2318,7 +2396,18 @@ Namespace AsParagraphs
 			' addParagraphsToTableOfContentItem1
 			' 
 			Me.addParagraphsToTableOfContentItem1.Id = 187
-			Me.addParagraphsToTableOfContentItem1.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() { New DevExpress.XtraBars.LinkPersistInfo(Me.setParagraphHeadingLevelItem1), New DevExpress.XtraBars.LinkPersistInfo(Me.setParagraphHeadingLevelItem2), New DevExpress.XtraBars.LinkPersistInfo(Me.setParagraphHeadingLevelItem3), New DevExpress.XtraBars.LinkPersistInfo(Me.setParagraphHeadingLevelItem4), New DevExpress.XtraBars.LinkPersistInfo(Me.setParagraphHeadingLevelItem5), New DevExpress.XtraBars.LinkPersistInfo(Me.setParagraphHeadingLevelItem6), New DevExpress.XtraBars.LinkPersistInfo(Me.setParagraphHeadingLevelItem7), New DevExpress.XtraBars.LinkPersistInfo(Me.setParagraphHeadingLevelItem8), New DevExpress.XtraBars.LinkPersistInfo(Me.setParagraphHeadingLevelItem9), New DevExpress.XtraBars.LinkPersistInfo(Me.setParagraphHeadingLevelItem10)})
+			Me.addParagraphsToTableOfContentItem1.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() {
+				New DevExpress.XtraBars.LinkPersistInfo(Me.setParagraphHeadingLevelItem1),
+				New DevExpress.XtraBars.LinkPersistInfo(Me.setParagraphHeadingLevelItem2),
+				New DevExpress.XtraBars.LinkPersistInfo(Me.setParagraphHeadingLevelItem3),
+				New DevExpress.XtraBars.LinkPersistInfo(Me.setParagraphHeadingLevelItem4),
+				New DevExpress.XtraBars.LinkPersistInfo(Me.setParagraphHeadingLevelItem5),
+				New DevExpress.XtraBars.LinkPersistInfo(Me.setParagraphHeadingLevelItem6),
+				New DevExpress.XtraBars.LinkPersistInfo(Me.setParagraphHeadingLevelItem7),
+				New DevExpress.XtraBars.LinkPersistInfo(Me.setParagraphHeadingLevelItem8),
+				New DevExpress.XtraBars.LinkPersistInfo(Me.setParagraphHeadingLevelItem9),
+				New DevExpress.XtraBars.LinkPersistInfo(Me.setParagraphHeadingLevelItem10)
+			})
 			Me.addParagraphsToTableOfContentItem1.Name = "addParagraphsToTableOfContentItem1"
 			' 
 			' setParagraphHeadingLevelItem1
@@ -2391,7 +2480,11 @@ Namespace AsParagraphs
 			' insertCaptionPlaceholderItem1
 			' 
 			Me.insertCaptionPlaceholderItem1.Id = 198
-			Me.insertCaptionPlaceholderItem1.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() { New DevExpress.XtraBars.LinkPersistInfo(Me.insertFiguresCaptionItems1), New DevExpress.XtraBars.LinkPersistInfo(Me.insertTablesCaptionItems1), New DevExpress.XtraBars.LinkPersistInfo(Me.insertEquationsCaptionItems1)})
+			Me.insertCaptionPlaceholderItem1.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() {
+				New DevExpress.XtraBars.LinkPersistInfo(Me.insertFiguresCaptionItems1),
+				New DevExpress.XtraBars.LinkPersistInfo(Me.insertTablesCaptionItems1),
+				New DevExpress.XtraBars.LinkPersistInfo(Me.insertEquationsCaptionItems1)
+			})
 			Me.insertCaptionPlaceholderItem1.Name = "insertCaptionPlaceholderItem1"
 			' 
 			' insertFiguresCaptionItems1
@@ -2412,7 +2505,11 @@ Namespace AsParagraphs
 			' insertTableOfFiguresPlaceholderItem1
 			' 
 			Me.insertTableOfFiguresPlaceholderItem1.Id = 202
-			Me.insertTableOfFiguresPlaceholderItem1.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() { New DevExpress.XtraBars.LinkPersistInfo(Me.insertTableOfFiguresItems1), New DevExpress.XtraBars.LinkPersistInfo(Me.insertTableOfTablesItems1), New DevExpress.XtraBars.LinkPersistInfo(Me.insertTableOfEquationsItems1)})
+			Me.insertTableOfFiguresPlaceholderItem1.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() {
+				New DevExpress.XtraBars.LinkPersistInfo(Me.insertTableOfFiguresItems1),
+				New DevExpress.XtraBars.LinkPersistInfo(Me.insertTableOfTablesItems1),
+				New DevExpress.XtraBars.LinkPersistInfo(Me.insertTableOfEquationsItems1)
+			})
 			Me.insertTableOfFiguresPlaceholderItem1.Name = "insertTableOfFiguresPlaceholderItem1"
 			' 
 			' insertTableOfFiguresItems1
@@ -2489,7 +2586,14 @@ Namespace AsParagraphs
 			' changeFloatingObjectTextWrapTypeItem1
 			' 
 			Me.changeFloatingObjectTextWrapTypeItem1.Id = 210
-			Me.changeFloatingObjectTextWrapTypeItem1.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() { New DevExpress.XtraBars.LinkPersistInfo(Me.setFloatingObjectSquareTextWrapTypeItem1), New DevExpress.XtraBars.LinkPersistInfo(Me.setFloatingObjectTightTextWrapTypeItem1), New DevExpress.XtraBars.LinkPersistInfo(Me.setFloatingObjectThroughTextWrapTypeItem1), New DevExpress.XtraBars.LinkPersistInfo(Me.setFloatingObjectTopAndBottomTextWrapTypeItem1), New DevExpress.XtraBars.LinkPersistInfo(Me.setFloatingObjectBehindTextWrapTypeItem1), New DevExpress.XtraBars.LinkPersistInfo(Me.setFloatingObjectInFrontOfTextWrapTypeItem1)})
+			Me.changeFloatingObjectTextWrapTypeItem1.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() {
+				New DevExpress.XtraBars.LinkPersistInfo(Me.setFloatingObjectSquareTextWrapTypeItem1),
+				New DevExpress.XtraBars.LinkPersistInfo(Me.setFloatingObjectTightTextWrapTypeItem1),
+				New DevExpress.XtraBars.LinkPersistInfo(Me.setFloatingObjectThroughTextWrapTypeItem1),
+				New DevExpress.XtraBars.LinkPersistInfo(Me.setFloatingObjectTopAndBottomTextWrapTypeItem1),
+				New DevExpress.XtraBars.LinkPersistInfo(Me.setFloatingObjectBehindTextWrapTypeItem1),
+				New DevExpress.XtraBars.LinkPersistInfo(Me.setFloatingObjectInFrontOfTextWrapTypeItem1)
+			})
 			Me.changeFloatingObjectTextWrapTypeItem1.Name = "changeFloatingObjectTextWrapTypeItem1"
 			' 
 			' setFloatingObjectSquareTextWrapTypeItem1
@@ -2525,7 +2629,17 @@ Namespace AsParagraphs
 			' changeFloatingObjectAlignmentItem1
 			' 
 			Me.changeFloatingObjectAlignmentItem1.Id = 217
-			Me.changeFloatingObjectAlignmentItem1.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() { New DevExpress.XtraBars.LinkPersistInfo(Me.setFloatingObjectTopLeftAlignmentItem1), New DevExpress.XtraBars.LinkPersistInfo(Me.setFloatingObjectTopCenterAlignmentItem1), New DevExpress.XtraBars.LinkPersistInfo(Me.setFloatingObjectTopRightAlignmentItem1), New DevExpress.XtraBars.LinkPersistInfo(Me.setFloatingObjectMiddleLeftAlignmentItem1), New DevExpress.XtraBars.LinkPersistInfo(Me.setFloatingObjectMiddleCenterAlignmentItem1), New DevExpress.XtraBars.LinkPersistInfo(Me.setFloatingObjectMiddleRightAlignmentItem1), New DevExpress.XtraBars.LinkPersistInfo(Me.setFloatingObjectBottomLeftAlignmentItem1), New DevExpress.XtraBars.LinkPersistInfo(Me.setFloatingObjectBottomCenterAlignmentItem1), New DevExpress.XtraBars.LinkPersistInfo(Me.setFloatingObjectBottomRightAlignmentItem1)})
+			Me.changeFloatingObjectAlignmentItem1.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() {
+				New DevExpress.XtraBars.LinkPersistInfo(Me.setFloatingObjectTopLeftAlignmentItem1),
+				New DevExpress.XtraBars.LinkPersistInfo(Me.setFloatingObjectTopCenterAlignmentItem1),
+				New DevExpress.XtraBars.LinkPersistInfo(Me.setFloatingObjectTopRightAlignmentItem1),
+				New DevExpress.XtraBars.LinkPersistInfo(Me.setFloatingObjectMiddleLeftAlignmentItem1),
+				New DevExpress.XtraBars.LinkPersistInfo(Me.setFloatingObjectMiddleCenterAlignmentItem1),
+				New DevExpress.XtraBars.LinkPersistInfo(Me.setFloatingObjectMiddleRightAlignmentItem1),
+				New DevExpress.XtraBars.LinkPersistInfo(Me.setFloatingObjectBottomLeftAlignmentItem1),
+				New DevExpress.XtraBars.LinkPersistInfo(Me.setFloatingObjectBottomCenterAlignmentItem1),
+				New DevExpress.XtraBars.LinkPersistInfo(Me.setFloatingObjectBottomRightAlignmentItem1)
+			})
 			Me.changeFloatingObjectAlignmentItem1.Name = "changeFloatingObjectAlignmentItem1"
 			' 
 			' setFloatingObjectTopLeftAlignmentItem1
@@ -2576,7 +2690,11 @@ Namespace AsParagraphs
 			' floatingObjectBringForwardSubItem1
 			' 
 			Me.floatingObjectBringForwardSubItem1.Id = 227
-			Me.floatingObjectBringForwardSubItem1.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() { New DevExpress.XtraBars.LinkPersistInfo(Me.floatingObjectBringForwardItem1), New DevExpress.XtraBars.LinkPersistInfo(Me.floatingObjectBringToFrontItem1), New DevExpress.XtraBars.LinkPersistInfo(Me.floatingObjectBringInFrontOfTextItem1)})
+			Me.floatingObjectBringForwardSubItem1.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() {
+				New DevExpress.XtraBars.LinkPersistInfo(Me.floatingObjectBringForwardItem1),
+				New DevExpress.XtraBars.LinkPersistInfo(Me.floatingObjectBringToFrontItem1),
+				New DevExpress.XtraBars.LinkPersistInfo(Me.floatingObjectBringInFrontOfTextItem1)
+			})
 			Me.floatingObjectBringForwardSubItem1.Name = "floatingObjectBringForwardSubItem1"
 			' 
 			' floatingObjectBringForwardItem1
@@ -2597,7 +2715,11 @@ Namespace AsParagraphs
 			' floatingObjectSendBackwardSubItem1
 			' 
 			Me.floatingObjectSendBackwardSubItem1.Id = 231
-			Me.floatingObjectSendBackwardSubItem1.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() { New DevExpress.XtraBars.LinkPersistInfo(Me.floatingObjectSendBackwardItem1), New DevExpress.XtraBars.LinkPersistInfo(Me.floatingObjectSendToBackItem1), New DevExpress.XtraBars.LinkPersistInfo(Me.floatingObjectSendBehindTextItem1)})
+			Me.floatingObjectSendBackwardSubItem1.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() {
+				New DevExpress.XtraBars.LinkPersistInfo(Me.floatingObjectSendBackwardItem1),
+				New DevExpress.XtraBars.LinkPersistInfo(Me.floatingObjectSendToBackItem1),
+				New DevExpress.XtraBars.LinkPersistInfo(Me.floatingObjectSendBehindTextItem1)
+			})
 			Me.floatingObjectSendBackwardSubItem1.Name = "floatingObjectSendBackwardSubItem1"
 			' 
 			' floatingObjectSendBackwardItem1
@@ -2678,7 +2800,13 @@ Namespace AsParagraphs
 			' commandBarSubItem1
 			' 
 			Me.commandBarSubItem1.Id = 239
-			Me.commandBarSubItem1.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() { New DevExpress.XtraBars.LinkPersistInfo(Me.commandBarCheckItem5), New DevExpress.XtraBars.LinkPersistInfo(Me.commandBarCheckItem6), New DevExpress.XtraBars.LinkPersistInfo(Me.commandBarCheckItem7), New DevExpress.XtraBars.LinkPersistInfo(Me.commandBarCheckItem8), New DevExpress.XtraBars.LinkPersistInfo(Me.commandBarCheckItem9)})
+			Me.commandBarSubItem1.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() {
+				New DevExpress.XtraBars.LinkPersistInfo(Me.commandBarCheckItem5),
+				New DevExpress.XtraBars.LinkPersistInfo(Me.commandBarCheckItem6),
+				New DevExpress.XtraBars.LinkPersistInfo(Me.commandBarCheckItem7),
+				New DevExpress.XtraBars.LinkPersistInfo(Me.commandBarCheckItem8),
+				New DevExpress.XtraBars.LinkPersistInfo(Me.commandBarCheckItem9)
+			})
 			Me.commandBarSubItem1.Name = "commandBarSubItem1"
 			Me.commandBarSubItem1.SnapCommand = DevExpress.Snap.Extensions.UI.SnapCommand.SummaryByField
 			' 
@@ -2747,7 +2875,10 @@ Namespace AsParagraphs
 			' commandBarSubItem2
 			' 
 			Me.commandBarSubItem2.Id = 247
-			Me.commandBarSubItem2.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() { New DevExpress.XtraBars.LinkPersistInfo(Me.commandBarCheckItem10), New DevExpress.XtraBars.LinkPersistInfo(Me.commandBarCheckItem11)})
+			Me.commandBarSubItem2.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() {
+				New DevExpress.XtraBars.LinkPersistInfo(Me.commandBarCheckItem10),
+				New DevExpress.XtraBars.LinkPersistInfo(Me.commandBarCheckItem11)
+			})
 			Me.commandBarSubItem2.Name = "commandBarSubItem2"
 			Me.commandBarSubItem2.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large
 			Me.commandBarSubItem2.SnapCommand = DevExpress.Snap.Extensions.UI.SnapCommand.GroupHeader
@@ -2767,7 +2898,10 @@ Namespace AsParagraphs
 			' commandBarSubItem3
 			' 
 			Me.commandBarSubItem3.Id = 250
-			Me.commandBarSubItem3.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() { New DevExpress.XtraBars.LinkPersistInfo(Me.commandBarCheckItem12), New DevExpress.XtraBars.LinkPersistInfo(Me.commandBarCheckItem13)})
+			Me.commandBarSubItem3.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() {
+				New DevExpress.XtraBars.LinkPersistInfo(Me.commandBarCheckItem12),
+				New DevExpress.XtraBars.LinkPersistInfo(Me.commandBarCheckItem13)
+			})
 			Me.commandBarSubItem3.Name = "commandBarSubItem3"
 			Me.commandBarSubItem3.SnapCommand = DevExpress.Snap.Extensions.UI.SnapCommand.GroupFooter
 			' 
@@ -2798,7 +2932,15 @@ Namespace AsParagraphs
 			' commandBarSubItem4
 			' 
 			Me.commandBarSubItem4.Id = 255
-			Me.commandBarSubItem4.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() { New DevExpress.XtraBars.LinkPersistInfo(Me.commandBarCheckItem14), New DevExpress.XtraBars.LinkPersistInfo(Me.commandBarCheckItem15), New DevExpress.XtraBars.LinkPersistInfo(Me.commandBarCheckItem16), New DevExpress.XtraBars.LinkPersistInfo(Me.commandBarCheckItem17), New DevExpress.XtraBars.LinkPersistInfo(Me.commandBarCheckItem18), New DevExpress.XtraBars.LinkPersistInfo(Me.commandBarCheckItem19), New DevExpress.XtraBars.LinkPersistInfo(Me.commandBarCheckItem20)})
+			Me.commandBarSubItem4.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() {
+				New DevExpress.XtraBars.LinkPersistInfo(Me.commandBarCheckItem14),
+				New DevExpress.XtraBars.LinkPersistInfo(Me.commandBarCheckItem15),
+				New DevExpress.XtraBars.LinkPersistInfo(Me.commandBarCheckItem16),
+				New DevExpress.XtraBars.LinkPersistInfo(Me.commandBarCheckItem17),
+				New DevExpress.XtraBars.LinkPersistInfo(Me.commandBarCheckItem18),
+				New DevExpress.XtraBars.LinkPersistInfo(Me.commandBarCheckItem19),
+				New DevExpress.XtraBars.LinkPersistInfo(Me.commandBarCheckItem20)
+			})
 			Me.commandBarSubItem4.Name = "commandBarSubItem4"
 			Me.commandBarSubItem4.SnapCommand = DevExpress.Snap.Extensions.UI.SnapCommand.InsertGroupSeparator
 			' 
@@ -2858,7 +3000,10 @@ Namespace AsParagraphs
 			' commandBarSubItem5
 			' 
 			Me.commandBarSubItem5.Id = 264
-			Me.commandBarSubItem5.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() { New DevExpress.XtraBars.LinkPersistInfo(Me.commandBarCheckItem21), New DevExpress.XtraBars.LinkPersistInfo(Me.commandBarCheckItem22)})
+			Me.commandBarSubItem5.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() {
+				New DevExpress.XtraBars.LinkPersistInfo(Me.commandBarCheckItem21),
+				New DevExpress.XtraBars.LinkPersistInfo(Me.commandBarCheckItem22)
+			})
 			Me.commandBarSubItem5.Name = "commandBarSubItem5"
 			Me.commandBarSubItem5.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large
 			Me.commandBarSubItem5.SnapCommand = DevExpress.Snap.Extensions.UI.SnapCommand.ListHeader
@@ -2878,7 +3023,10 @@ Namespace AsParagraphs
 			' commandBarSubItem6
 			' 
 			Me.commandBarSubItem6.Id = 267
-			Me.commandBarSubItem6.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() { New DevExpress.XtraBars.LinkPersistInfo(Me.commandBarCheckItem23), New DevExpress.XtraBars.LinkPersistInfo(Me.commandBarCheckItem24)})
+			Me.commandBarSubItem6.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() {
+				New DevExpress.XtraBars.LinkPersistInfo(Me.commandBarCheckItem23),
+				New DevExpress.XtraBars.LinkPersistInfo(Me.commandBarCheckItem24)
+			})
 			Me.commandBarSubItem6.Name = "commandBarSubItem6"
 			Me.commandBarSubItem6.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large
 			Me.commandBarSubItem6.SnapCommand = DevExpress.Snap.Extensions.UI.SnapCommand.ListFooter
@@ -2918,7 +3066,15 @@ Namespace AsParagraphs
 			' commandBarSubItem7
 			' 
 			Me.commandBarSubItem7.Id = 272
-			Me.commandBarSubItem7.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() { New DevExpress.XtraBars.LinkPersistInfo(Me.commandBarCheckItem25), New DevExpress.XtraBars.LinkPersistInfo(Me.commandBarCheckItem26), New DevExpress.XtraBars.LinkPersistInfo(Me.commandBarCheckItem27), New DevExpress.XtraBars.LinkPersistInfo(Me.commandBarCheckItem28), New DevExpress.XtraBars.LinkPersistInfo(Me.commandBarCheckItem29), New DevExpress.XtraBars.LinkPersistInfo(Me.commandBarCheckItem30), New DevExpress.XtraBars.LinkPersistInfo(Me.commandBarCheckItem31)})
+			Me.commandBarSubItem7.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() {
+				New DevExpress.XtraBars.LinkPersistInfo(Me.commandBarCheckItem25),
+				New DevExpress.XtraBars.LinkPersistInfo(Me.commandBarCheckItem26),
+				New DevExpress.XtraBars.LinkPersistInfo(Me.commandBarCheckItem27),
+				New DevExpress.XtraBars.LinkPersistInfo(Me.commandBarCheckItem28),
+				New DevExpress.XtraBars.LinkPersistInfo(Me.commandBarCheckItem29),
+				New DevExpress.XtraBars.LinkPersistInfo(Me.commandBarCheckItem30),
+				New DevExpress.XtraBars.LinkPersistInfo(Me.commandBarCheckItem31)
+			})
 			Me.commandBarSubItem7.Name = "commandBarSubItem7"
 			Me.commandBarSubItem7.SnapCommand = DevExpress.Snap.Extensions.UI.SnapCommand.InsertDataRowSeparator
 			' 
@@ -3333,7 +3489,7 @@ Namespace AsParagraphs
 		Private toggleBandedRowsItem1 As DevExpress.XtraRichEdit.UI.ToggleBandedRowsItem
 		Private toggleFirstColumnItem1 As DevExpress.XtraRichEdit.UI.ToggleFirstColumnItem
 		Private toggleLastColumnItem1 As DevExpress.XtraRichEdit.UI.ToggleLastColumnItem
-		Private toggleBandedColumnItem1 As DevExpress.XtraRichEdit.UI.ToggleBandedColumnItem
+		Private toggleBandedColumnItem1 As DevExpress.XtraRichEdit.UI.ToggleBandedColumnsItem
 		Private galleryChangeTableStyleItem1 As DevExpress.XtraRichEdit.UI.GalleryChangeTableStyleItem
 		Private galleryChangeTableCellStyleItem1 As DevExpress.Snap.Extensions.UI.GalleryChangeTableCellStyleItem
 		Private changeTableBorderLineStyleItem1 As DevExpress.XtraRichEdit.UI.ChangeTableBorderLineStyleItem
